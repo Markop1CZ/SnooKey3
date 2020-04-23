@@ -114,7 +114,7 @@ class SKHandler(BaseHTTPRequestHandler):
             print(req.content)
             response = json.loads(str(req.content, encoding="ascii"))
             if req.status_code == 200 and not pyfailed:
-                content = sucess_body.format(response["data"]["streamer_key"], response["data"]["post"]["outboundLink"]["url"])
+                content = success_body.format(response["data"]["streamer_key"], response["data"]["post"]["outboundLink"]["url"])
                 self.wfile.write(bytes(content, encoding="ascii"))
             else:
                 content = failed_body.format(str(req.status_code), str(req.content, encoding="ascii").replace("\n", "<br>"))
